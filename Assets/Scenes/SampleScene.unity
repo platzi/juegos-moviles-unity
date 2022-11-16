@@ -157,6 +157,14 @@ MonoBehaviour:
   tileObject: {fileID: 7064733439857909168, guid: 2c1ba163768a94e42b68c4b301dca5cd, type: 3}
   cameraSizeOffset: 0
   cameraVerticalOffset: 0
+  availablePieces:
+  - {fileID: 817711088975528766, guid: 53dd5382f6d044655b84e142b5cccdab, type: 3}
+  - {fileID: 8081273499332611991, guid: a18a347e292cc48aab6aa53eadc29a38, type: 3}
+  - {fileID: 4751158970388175863, guid: 4ea3e557d9a4d471abf98dbc503fd801, type: 3}
+  - {fileID: 291326294968460518, guid: 4bda3a385dd4f47edb8f8b7b8ce9f650, type: 3}
+  - {fileID: 243543261277457681, guid: 8caba64e076fb46239322440b49d092b, type: 3}
+  - {fileID: 730523893321002976, guid: 86f9b365d88bf4724ba15edb6f173f55, type: 3}
+  - {fileID: 6014484026380003602, guid: aa30ed9bec5764d1eba57272d5c2ecf1, type: 3}
 --- !u!4 &743632297
 Transform:
   m_ObjectHideFlags: 0
