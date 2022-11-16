@@ -22,6 +22,8 @@ public class Board : MonoBehaviour
     Tile startTile;
     Tile endTile;
 
+    bool swappingPieces = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -56,7 +58,7 @@ public class Board : MonoBehaviour
 
         Camera.main.transform.position = new Vector3(newPosX - 0.5f, newPosY - 0.5f + cameraVerticalOffset, -10f);
 
-        float horizontal = width+1;
+        float horizontal = width + 1;
         float vertical = (height / 2) + 1;
 
         Camera.main.orthographicSize = horizontal > vertical ? horizontal + cameraSizeOffset : vertical + cameraSizeOffset;
@@ -65,14 +67,14 @@ public class Board : MonoBehaviour
 
     private void SetupBoard()
     {
-        for(int x=0; x<width; x++)
+        for (int x = 0; x < width; x++)
         {
-            for (int y = 0; y<height; y++)
+            for (int y = 0; y < height; y++)
             {
                 var o = Instantiate(tileObject, new Vector3(x, y, -5), Quaternion.identity);
                 o.transform.parent = transform;
                 Tiles[x, y] = o.GetComponent<Tile>();
-                Tiles[x,y]?.Setup(x, y, this);
+                Tiles[x, y]?.Setup(x, y, this);
             }
         }
     }
@@ -89,15 +91,13 @@ public class Board : MonoBehaviour
 
     public void TileUp(Tile tile_)
     {
-        if(startTile!=null && endTile != null)
+        if (startTile != null && endTile != null && IsCloseTo(startTile, endTile))
         {
-            SwapTiles();
+            StartCoroutine(SwapTiles());
         }
-        startTile = null;
-        endTile = null;
     }
 
-    private void SwapTiles()
+    IEnumerator SwapTiles()
     {
         var StarPiece = Pieces[startTile.x, startTile.y];
         var EndPiece = Pieces[endTile.x, endTile.y];
@@ -107,6 +107,53 @@ public class Board : MonoBehaviour
 
         Pieces[startTile.x, startTile.y] = EndPiece;
         Pieces[endTile.x, endTile.y] = StarPiece;
+
+        yield return new WaitForSeconds(0.6f);
+
+        bool foundMatch = false;
+        var startMatches = GetMatchByPiece(startTile.x, startTile.y, 3);
+        var endMatches = GetMatchByPiece(endTile.x, endTile.y, 3);
+
+        startMatches.ForEach(piece =>
+        {
+            foundMatch = true;
+            Pieces[piece.x, piece.y] = null;
+            Destroy(piece.gameObject);
+        });
+
+        endMatches.ForEach(piece =>
+        {
+            foundMatch = true;
+            Pieces[piece.x, piece.y] = null;
+            Destroy(piece.gameObject);
+        });
+
+        if (!foundMatch)
+        {
+            StarPiece.Move(startTile.x, startTile.y);
+            EndPiece.Move(endTile.x, endTile.y);
+            Pieces[startTile.x, startTile.y] = StarPiece;
+            Pieces[endTile.x, endTile.y] = EndPiece;
+        }
+
+        startTile = null;
+        endTile = null;
+        swappingPieces = false;
+
+        yield return null;
+    }
+
+    public bool IsCloseTo(Tile start, Tile end)
+    {
+        if (Math.Abs((start.x - end.x)) == 1 && start.y == end.y)
+        {
+            return true;
+        }
+        if (Math.Abs((start.y - end.y)) == 1 && start.x == end.x)
+        {
+            return true;
+        }
+        return false;
     }
 
     public List<Piece> GetMatchByDirection(int xpos, int ypos, Vector2 direction, int minPieces = 3)
