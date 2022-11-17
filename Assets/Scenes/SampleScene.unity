@@ -123,6 +123,54 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &264145438
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 264145440}
+  - component: {fileID: 264145439}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &264145439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 264145438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89125367c91b744f2b075143ef15dfab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Points: 0
+  OnPointsUpdated:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!4 &264145440
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 264145438}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.87916815, y: 7.7469215, z: -0.0031823844}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &313891343
 GameObject:
   m_ObjectHideFlags: 0
@@ -226,6 +274,7 @@ MonoBehaviour:
   tileObject: {fileID: 7064733439857909168, guid: 2c1ba163768a94e42b68c4b301dca5cd, type: 3}
   cameraSizeOffset: 0
   cameraVerticalOffset: 0
+  PointsPerMatch: 3
   availablePieces:
   - {fileID: 817711088975528766, guid: 53dd5382f6d044655b84e142b5cccdab, type: 3}
   - {fileID: 8081273499332611991, guid: a18a347e292cc48aab6aa53eadc29a38, type: 3}
