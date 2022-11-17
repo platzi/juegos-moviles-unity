@@ -170,8 +170,34 @@ public class Board : MonoBehaviour
         });
         List<int> columns = GetColumns(piecesToClear);
         List<Piece> collapsedPieces =  collapseColumns(columns, 0.3f);
+        FindMatchsRecursively(collapsedPieces);
     }
 
+    private void FindMatchsRecursively(List<Piece> collapsedPieces)
+    {
+        StartCoroutine(FindMatchsRecursivelyCoroutine(collapsedPieces));
+    }
+
+    IEnumerator FindMatchsRecursivelyCoroutine(List<Piece> collapsedPieces)
+    {
+        yield return new WaitForSeconds(1f);
+        List<Piece> newMatches = new List<Piece>();
+        collapsedPieces.ForEach(piece =>
+        {
+            var matches = GetMatchByPiece(piece.x, piece.y, 3);
+            if (matches != null)
+            {
+                newMatches = newMatches.Union(matches).ToList();
+                ClearPieces(matches);
+            }
+        });
+        if (newMatches.Count > 0)
+        {
+            var newCollapsedPieces = collapseColumns(GetColumns(newMatches), 0.3f);
+            FindMatchsRecursively(newCollapsedPieces);
+        }
+        yield return null;
+    }
 
     private List<int> GetColumns(List<Piece> piecesToClear)
     {
