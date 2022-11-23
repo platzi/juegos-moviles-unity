@@ -13,6 +13,7 @@ public class UIScreen : MonoBehaviour
     public Image background;
     public GameManager.GameState visibleState;
     public float transitionTime;
+    public float visibleAlpha = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -44,7 +45,7 @@ public class UIScreen : MonoBehaviour
         bgColor.a = 0;
         background.DOColor(bgColor, transitionTime * 0.5f);
         //container
-        containerCanvas.alpha = 1;
+        containerCanvas.alpha = visibleAlpha;
         containerRect.anchoredPosition = Vector2.zero;
         containerCanvas.DOFade(0f, transitionTime * 0.5f);
         containerRect.DOAnchorPos(new Vector2(0, -100), transitionTime * 0.5f).onComplete = () =>
@@ -64,7 +65,7 @@ public class UIScreen : MonoBehaviour
         var bgColor = background.color;
         bgColor.a = 0;
         background.color = bgColor;
-        bgColor.a = 1;
+        bgColor.a = visibleAlpha;
         background.DOColor(bgColor, transitionTime);
         //container animation
         containerCanvas.alpha = 0;

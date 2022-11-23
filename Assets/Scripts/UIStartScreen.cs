@@ -6,6 +6,6 @@ public class UIStartScreen : MonoBehaviour
 {
     public void StartBtnClicked()
     {
-        GameManager.Instance.StartGame();
+        GameManager.Instance.LevelSelection();
     }
 }

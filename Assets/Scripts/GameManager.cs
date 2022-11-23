@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public enum GameState
     {
         Idle,
+        LevelSelection,
         InGame,
         GameOver
     }
@@ -75,6 +76,18 @@ public class GameManager : MonoBehaviour
     public void ExitGame()
     {
         Points = 0;
+        gameState = GameState.Idle;
+        OnGameStateUpdated?.Invoke(gameState);
+    }
+
+    public void LevelSelection()
+    {
+        gameState = GameState.LevelSelection;
+        OnGameStateUpdated?.Invoke(gameState);
+    }
+
+    public void Idle()
+    {
         gameState = GameState.Idle;
         OnGameStateUpdated?.Invoke(gameState);
     }
