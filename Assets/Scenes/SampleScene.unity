@@ -271,7 +271,7 @@ GameObject:
   - component: {fileID: 78400759}
   - component: {fileID: 78400758}
   m_Layer: 5
-  m_Name: BTNStartGame
+  m_Name: BTNPause
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -342,9 +342,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1727924454}
-        m_TargetAssemblyTypeName: UIStartScreen, Assembly-CSharp
-        m_MethodName: StartBtnClicked
+      - m_Target: {fileID: 1648851823}
+        m_TargetAssemblyTypeName: UIInGame, Assembly-CSharp
+        m_MethodName: PauseButtonPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1245,6 +1245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointsLabel: {fileID: 448022048}
+  icon: {fileID: 890591054}
 --- !u!114 &448022048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3931,6 +3932,7 @@ GameObject:
   - component: {fileID: 1648851822}
   - component: {fileID: 1648851821}
   - component: {fileID: 1648851820}
+  - component: {fileID: 1648851823}
   m_Layer: 5
   m_Name: UIInGame
   m_TagString: Untagged
@@ -4028,6 +4030,18 @@ MonoBehaviour:
   visibleState: 2
   transitionTime: 0.1
   visibleAlpha: 0
+--- !u!114 &1648851823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1648851817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24d2d905e6dac4ab5995033d85f5d0db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1727924449
 GameObject:
   m_ObjectHideFlags: 0
