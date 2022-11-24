@@ -67,6 +67,26 @@ public class Board : MonoBehaviour
         {
             ClearAllPieces();
         }
+        if(newState == GameManager.GameState.Idle)
+        {
+            ResetBoard();
+            ResetCamera();
+            setupMade = false;
+        }
+    }
+
+    private void ResetCamera()
+    {
+        Camera.main.orthographicSize = 5;
+        Camera.main.transform.position = Vector3.zero;
+    }
+
+    private void ResetBoard()
+    {
+        foreach (Transform item in transform)
+        {
+            Destroy(item.gameObject);
+        }
     }
 
     private IEnumerator SetupPieces()
@@ -126,6 +146,7 @@ public class Board : MonoBehaviour
         Pieces[x, y].Move(x, y);
         return Pieces[x, y];
     }
+
 
     private void PositionCamera()
     {

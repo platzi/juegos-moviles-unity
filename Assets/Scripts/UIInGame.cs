@@ -6,6 +6,6 @@ public class UIInGame : MonoBehaviour
 {
     public void PauseButtonPressed()
     {
-        //pausar el juego. 
+        GameManager.Instance.Pause();
     }
 }
