@@ -542,6 +542,7 @@ GameObject:
   - component: {fileID: 250271749}
   - component: {fileID: 250271748}
   - component: {fileID: 250271747}
+  - component: {fileID: 250271751}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -578,7 +579,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1080, y: 1920}
@@ -635,6 +636,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &250271751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 250271746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b2d1588e5b09427997cf402b77a9775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 448022045}
+  showOnState: 2
 --- !u!1 &264145438
 GameObject:
   m_ObjectHideFlags: 0
@@ -2046,7 +2061,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1752406234}
-  hideOnstate: 1
+  showOnState: 0
 --- !u!4 &864269348
 Transform:
   m_ObjectHideFlags: 0
@@ -3363,7 +3378,7 @@ MonoBehaviour:
   containerRect: {fileID: 768460315}
   containerCanvas: {fileID: 768460316}
   background: {fileID: 1612105618}
-  visibleState: 2
+  visibleState: 3
   transitionTime: 1.2
   visibleAlpha: 1
 --- !u!114 &1612105618
@@ -3598,7 +3613,7 @@ MonoBehaviour:
   background: {fileID: 1727924452}
   visibleState: 0
   transitionTime: 1.2
-  visibleAlpha: 1
+  visibleAlpha: 0.8
 --- !u!114 &1727924452
 MonoBehaviour:
   m_ObjectHideFlags: 0
